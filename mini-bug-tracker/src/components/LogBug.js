@@ -15,7 +15,7 @@ const LogBug = ({logBug}) => {
       alert('Please add a bug description')
       return
     }
-    logBug({title: bugTitle, description: bugDescription})
+    logBug({title: bugTitle, description: bugDescription, status: bugStatus})
     setTitle('')
     setDescription('')
   }

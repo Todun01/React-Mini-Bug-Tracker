@@ -4,6 +4,7 @@ import LogBug from "./components/LogBug";
 import {useState} from 'react'
 
 function App() {
+  const [showBugForm, setShowBugForm] = useState(false);
   const [bugs, setBugs] =  useState([
     {
       id: 1,
@@ -24,7 +25,6 @@ function App() {
       status: 'open'
     }
   ])
-
   //log bug
   const logBug = (bug) =>{
     const id = Math.floor(Math.random() * 10000) + 1
@@ -46,8 +46,8 @@ function App() {
   }
   return (
     <div className="container">
-      <Header />
-      <LogBug logBug={logBug}/>
+      <Header onLog={()=> setShowBugForm(!showBugForm)} showForm={showBugForm} />
+      {showBugForm && <LogBug logBug={logBug}/>}
       {bugs.length > 0? <Bugs bugs={bugs} onDelete={deleteBug} changeStatus={changeStatus}/>: 'No bugs logged'}
     </div>
   );

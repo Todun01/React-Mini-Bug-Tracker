@@ -8,7 +8,7 @@ const Bug = ({bug, onDelete, changeStatus}) => {
   return (
     <div className="bug">
       <h3>{bug.title}
-        <Button type="button" onClick={() => onDelete(bug.id)} style={{
+        <Button onClick={() => onDelete(bug.id)} style={{
           backgroundColor: "#f4f4f4", 
           color: "Red"}} text={<i className="bi bi-trash-fill"></i>}/> 
       </h3> 
@@ -16,8 +16,7 @@ const Bug = ({bug, onDelete, changeStatus}) => {
       <Button 
       type="button"
       style={{
-        borderColor: statusColor,
-        border: "1px solid",
+        border: "1px solid " + statusColor,
         color: statusColor, 
         backgroundColor: "white"}}
       text={bug.status}

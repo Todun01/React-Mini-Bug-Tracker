@@ -1,15 +1,15 @@
 import Button from "./Button"
-const Header = ({title= "Bug Tracker"}) => {
-  const onClick = ()=> {
-    console.log('click')
-  } 
+import PropTypes from 'prop-types'
+const Header = ({title= "Mini Bug Tracker", onLog, showForm}) => {
   return (
     <header className="header">
         <h1>{title}</h1>
         <Button style={{
           color: "white",
-          backgroundColor: "green",
-          }} text='Log' onClick={onClick} type="button"></Button>
+          backgroundColor: showForm? "red" : "green",
+          }} 
+          text={showForm? "Close" : "Log Bug"} 
+          onClick= {onLog} ></Button>
     </header>
   )
 }
@@ -19,5 +19,10 @@ const Header = ({title= "Bug Tracker"}) => {
 //   backgroundColor: 'black'
 // }
 
+
+Header.propTypes = {
+    title: PropTypes.string.isRequired,
+    showForm: PropTypes.bool.isRequired,
+}
 
 export default Header
